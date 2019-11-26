@@ -6,7 +6,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
      <div>
-       <button>Login with Facebook</button>
+       <a href="/login/facebook">Login with Facebook</a>
        <button>Login with Spotify</button>
        <button>Get bands</button>
      </div>
