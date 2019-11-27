@@ -10,9 +10,9 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <div>
-        {/* <Splash /> */}
+        <Splash />
 
-        <TestButtons />
+        {/* <TestButtons /> */}
 
 
       </div>
