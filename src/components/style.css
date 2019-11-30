@@ -1,8 +1,13 @@
 .header{
-    background-color: coral;
+    background-color: #1e1d2f;
     height: auto;
 }
 
 h1{
-    /* font-size: 72pt; */
+    color: white;
+}
+
+.wrapper{
+    background-color: #1e1d2f;
+    height: 100vh;
 }
