@@ -1,54 +1,93 @@
 import React from "react";
 import "./style.css";
+import NavBar from "./NavBar"
 
 const Splash = () => {
   return (
-    <div className='wrapper'>
+    <div className='wrapper '>
       <div className='header pb-10'>
         <h1 className='pt-10 font-mono text-5xl'>
           Welcome to LocalBandIt. Bitches.
         </h1>
       </div>
 
-      <div className='search'>
-        <form class='w-full max-w-sm'>
-          <div class='flex items-center border-b border-b-2 border-teal-500 py-2'>
-            <input
-              class='appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none'
-              type='text'
-              placeholder='Staring date'
-              aria-label='Starting date'></input>
-            <input
-              class='appearance-none bg-transparent border-none w-full text-gray-700 ml-10 mr-3 py-1 px-2 leading-tight focus:outline-none'
-              type='text'
-              placeholder='Ending date'
-              aria-label='Starting date'></input>
-            <button
-              class='flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded'
-              type='button'>
-              Go
-            </button>
+      <div className='search flex items-end'>
+        <div class='w-full md:w-1/3 px-3 mb-6 md:mb-0'>
+          <label
+            class='block uppercase tracking-wide text-white text-xs font-bold mb-2 text-left'
+            for='grid-city'>
+            Start date
+          </label>
+
+          <input
+            class='bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal'
+            type='email'
+            placeholder='Jan 1 2020'></input>
+        </div>
+
+        <div class='w-full md:w-1/3 px-3 mb-6 md:mb-0'>
+          <label
+            class='block uppercase tracking-wide text-white text-xs font-bold mb-2 text-left'
+            for='grid-city'>
+            End date
+          </label>
+
+          <input
+            class='bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal'
+            type='email'
+            placeholder='Jan 1 2020'></input>
+        </div>
+
+        <div class='w-full md:w-1/3 px-3 mb-6 md:mb-0'>
+          <label
+            class='block uppercase tracking-wide text-white text-left text-xs font-bold mb-2'
+            for='grid-state'>
+            State
+          </label>
+          <div class='relative'>
+            <select
+              class='bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal'
+              id='grid-state'>
+              <option>New Mexico</option>
+              <option>Missouri</option>
+              <option>Texas</option>
+            </select>
+            <div class='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
+              <svg
+                class='fill-current h-4 w-4'
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 20 20'>
+                <path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z' />
+              </svg>
+            </div>
           </div>
-        </form>
+        </div>
+
+        <button
+          class='items-end h-12 self-center flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2'
+          type='button'>
+          Go
+        </button>
+
       </div>
 
-      <ul className='flex border-b'>
-        <li className='-mb-px mr-1'>
-          <a
-            className='bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold'
-            href='/'>
-            Saved searches
+      {/* <ul class='flex'>
+        <li class='mr-6'>
+          <a class='text-blue-500 hover:text-blue-800' href='/'>
+            Active
           </a>
         </li>
-        <li className='mr-1'>
-          <a
-            className='bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold'
-            href='/'>
-            Current search
+        <li class='mr-6'>
+          <a class='text-blue-500 hover:text-blue-800' href='/'>
+            Link
           </a>
         </li>
       </ul>
+      
+    // </div> */}
+    <NavBar/>
     </div>
+    
   );
 };
 
