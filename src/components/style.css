@@ -3,11 +3,27 @@
     height: auto;
 }
 
+body{
+    background-color: #181725;
+}
+
 h1{
     color: white;
 }
 
-.wrapper{
-    background-color: #1e1d2f;
+
+.login-image{
+    background-image: url("local-bandit-02.svg");
+    background-repeat: no-repeat, repeat;
     height: 100vh;
+}
+
+.login-button{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 1;
+}
+
+.login-button-element{
+    margin-top: 35%;
 }
