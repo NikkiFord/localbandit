@@ -1,6 +1,7 @@
 import React from "react";
 import {useRoutes, A} from "hookrouter";
 
+import "../src/components/style.css"
 import SplashPage from "./components/SplashPage";
 import LoginPage from "./components/LoginPage";
 import HomePage from "./components/HomePage";

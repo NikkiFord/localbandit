@@ -1,15 +1,18 @@
 import React from "react";
 import "./style.css";
+import Nav from "./Nav"
 import NavBar from "./NavBar"
 
 const Splash = () => {
   return (
-    <div className='wrapper '>
-      <div className='header pb-10'>
+    
+    <div className='wrapper'>
+      <Nav />
+      {/* <div className='header pb-10'>
         <h1 className='pt-10 font-mono text-5xl'>
           Welcome to LocalBandIt. Bitches.
         </h1>
-      </div>
+      </div> */}
 
       <div className='search flex items-end'>
         <div class='w-full md:w-1/3 px-3 mb-6 md:mb-0'>
