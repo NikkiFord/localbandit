@@ -15,7 +15,7 @@ const Nav = () => {
         <span className='font-semibold text-xl tracking-tight'>Local Bandit</span>
       </div>
       <div className='block lg:hidden'>
-        <button className='flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white'>
+        <button className='flex items-center px-3 py-2 border rounded text-white border-teal-400 hover:text-white hover:border-white'>
           <svg
             className='fill-current h-3 w-3'
             viewBox='0 0 20 20'
@@ -44,7 +44,7 @@ const Nav = () => {
           </a>
         </div>
         <div>
-          <a href='/' className='inline-block text-sm px-4 py-2 leading-none border text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0' >
+          <a href='/' className='inline-block text-sm px-4 py-2 leading-none border text-white border-white hover:border-transparent hover:text-black hover:bg-white mt-4 lg:mt-0' >
             Sign Out
           </a>
         </div>
