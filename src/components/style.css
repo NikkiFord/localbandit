@@ -1,13 +1,7 @@
-.header{
-    background-color: #1e1d2f;
-    height: auto;
+body{
+    background-color: white;
 }
 
-h1{
-    color: white;
-}
-
-.wrapper{
-    background-color: #1e1d2f;
-    height: 100vh;
+.artist-details{
+    background-color: grey;
 }

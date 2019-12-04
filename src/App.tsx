@@ -1,29 +1,38 @@
-import React, { useState } from 'react';
-import './App.css';
-// import Spotify from '../src/components/spotify'
-import Splash from '../src/components/SplashPage'
-import TestButtons from '../src/components/TestButtons'
 
-// import { any } from 'prop-types';
+import React from "react";
+import {useRoutes, A} from "hookrouter";
 
-const App: React.FC = () => {
-  let [splashVisible, setSplashVisible] = useState(false);
-  // const loggedIn = false;
-  // const renderLandingPage = () => {
-  //   // if (loggedIn) {
-  //   //   return <Home />;
-  //   // }
-  //   return <Splash />;
-  // }
+import "../src/components/style.css"
+import SplashPage from "./components/SplashPage";
+import LoginPage from "./components/LoginPage";
+import HomePage from "./components/HomePage";
+import EventDetails from "./components/EventDetails";
+import NotFound from "./components/NotFound";
 
-  return (
-    <div className="App">
-      <div>
-       { splashVisible && <Splash /> }
-       <button onClick={() => setSplashVisible(!splashVisible)}>Show/Hide Splash</button>
-      </div>
-    </div> 
-  );
-}
+import "./App.css";
+
+const routes = {
+  "/": () => <SplashPage />,
+  "/login": () => <LoginPage />,
+  "/home*": () => <HomePage />,
+  "/event/:id": ({id}:any) => <EventDetails eventId={id} />
+};
+
+const App = () => (
+  <div>
+    <nav>
+      {/* Temporary Nav Buttons */}
+      <A className="nav-link" href="/">Splash Page</A>
+      <A className="nav-link" href="/login">Login Page</A>
+      <A className="nav-link" href="/home/saved-events">Home Page</A>
+      <A className="nav-link" href="/event/12345">Event Details Page</A>
+    </nav>
+
+    <div>
+      {/* Page Components */}
+      { useRoutes(routes) || <NotFound /> }
+    </div>
+  </div>
+);
 
 export default App;
