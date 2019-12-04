@@ -12,6 +12,8 @@
     "autoprefixer": "^9.7.2",
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "eventbrite": "^1.2.2",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "hookrouter": "^1.2.3",
@@ -32,7 +34,7 @@
     "wait-on": "^3.3.0"
   },
   "scripts": {
-    "start:server": "cd server && ts-node-dev --respawn --transpileOnly ./server.ts && wait-on tcp:5000",
+    "start:server": "cd server && ts-node-dev --respawn --transpileOnly ./server.ts && wait-on tcp:3001",
     "start:app": "react-scripts start",
     "start": "run-p --race start:server start:app",
     "build": "react-scripts build",
@@ -54,5 +56,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000/"
+  "proxy": "http://localhost:3001/"
 }
