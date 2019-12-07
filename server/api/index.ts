@@ -1,23 +1,54 @@
 import express from "express";
-import eventbrite from "eventbrite";
-import fs from "fs";
-import path from "path";
+import axios from "axios";
+import { SongkickResponse } from "../../interfaces";
 
-const sdk = eventbrite({token: process.env.EVENTBRITE_TOKEN});
+const { SONGKICK_API_ROOT, SONGKICK_API_KEY } = process.env;
 
-const api = express.Router();
+const apiRouter = express.Router();
 
-api.get("/events", (req, res) => {
-  fs.readFile(path.join(__dirname, 'eventbritesearch.json'), (err, data) => {
-    if (err) return res.send(err.stack);
-    res.json(JSON.parse(data.toString()));
-  });
-  /* API suffers from known issues. */
-  // sdk.request("/events/search/").then(events => {
-  //   res.json(events);
-  // }).catch(err => {
-  //   res.send(`${err.status}: ${err.statusText}`);
-  // });
+apiRouter.get("/events", async (req, res) => {
+  try {
+    const { city, state } = req.query;
+
+    const { data: locationData } = await axios.get<SongkickResponse>(
+      `${SONGKICK_API_ROOT}/search/locations.json`,
+      {
+        params: {
+          query: city || state,
+          apikey: SONGKICK_API_KEY
+        }
+      }
+    );
+
+    if (!locationData.resultsPage.results.location) {
+      throw new Error(`No location found for ${city}`)
+    }
+
+    const [location] = locationData.resultsPage.results.location
+      .filter(location => location.city.state.displayName === state);
+
+    if (!location) {
+      throw new Error(`No location found for ${city}, ${state}`);
+    }
+
+    const eventResults = await axios.get<SongkickResponse>(
+      `${SONGKICK_API_ROOT}/metro_areas/${location.metroArea.id}/calendar.json`,
+      {
+        params: {
+          apikey: SONGKICK_API_KEY
+        }
+      }
+    );
+
+    if (!eventResults.data.resultsPage.results.event) {
+      return res.json([]);
+    }
+
+    res.status(eventResults.status).json(eventResults.data.resultsPage.results.event);
+
+  } catch (err) {
+    res.send(err.toString());
+  }
 });
 
-export default api;
+export default apiRouter;
