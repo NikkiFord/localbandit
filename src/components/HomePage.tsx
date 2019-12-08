@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SearchResults from "./SearchResults";
+import SearchResults from "./SearchResults"
 import SavedEvents from "./SavedEvents";
 import {useRoutes, A} from "hookrouter";
 import axios from "axios";
