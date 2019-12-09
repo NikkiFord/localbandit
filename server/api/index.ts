@@ -20,11 +20,19 @@ apiRouter.get("/events", async (req, res) => {
       }
     );
 
-    if (!locationData.resultsPage.results.location) {
+    const results = locationData.resultsPage.results;
+
+    if (!results.location) {
       throw new Error(`No location found for ${city}`)
     }
 
-    const [location] = locationData.resultsPage.results.location
+    const [location] = results.location.length === 1
+      // If only 1 result then just use it.
+      ? results.location
+      // If more than 1 then filter out any who don't have a state
+      // and those where the state doesn't match what user selected.
+      : results.location
+      .filter(location => location.city.state)
       .filter(location => location.city.state.displayName === state);
 
     if (!location) {
@@ -47,8 +55,7 @@ apiRouter.get("/events", async (req, res) => {
     res.status(eventResults.status).json(eventResults.data.resultsPage.results.event);
 
   } catch (err) {
-    res.send(err.toString());
+    res.status(err.status || 500).send(err.toString());
   }
 });
-
 export default apiRouter;
