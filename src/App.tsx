@@ -1,6 +1,7 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {useRoutes, A} from "hookrouter";
+import axios from "axios";
 
 import "../src/components/style.css"
 import SplashPage from "./components/SplashPage";
@@ -10,24 +11,38 @@ import NotFound from "./components/NotFound";
 import "./App.css";
 
 const routes = {
-  "/": () => <SplashPage />,
-  "/login": () => <LoginPage />,
+  "/": () => (user: any) => <SplashPage user={user} />,
+  "/login": () => (user: any) => <LoginPage user={user} />,
 };
 
-const App = () => (
-  <div>
-    <nav>
-      {/* Temporary Nav Buttons */}
-      <A className="nav-link" href="/">Splash Page</A>
-      <A className="nav-link" href="/login">Login Page</A>
-      
-    </nav>
+const App = () => {
+  const [user, setUser] = useState(null as any);
 
+  useEffect(() => {
+    axios.get("/auth/user")
+      .then(response => {
+        setUser(response.data || null);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
+  return (
     <div>
-      {/* Page Components */}
-      { useRoutes(routes) || <NotFound /> }
+      <nav>
+        {/* Temporary Nav Buttons */}
+        <A className="nav-link" href="/">Splash Page</A>
+        <A className="nav-link" href="/login">Login Page</A>
+
+      </nav>
+
+      <div>
+        {/* Page Components */}
+        { useRoutes(routes)(user) || <NotFound /> }
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;
