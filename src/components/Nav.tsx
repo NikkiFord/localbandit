@@ -1,7 +1,19 @@
 import React from "react";
 import "./style.css";
+import { NavProps } from "../../interfaces";
+import { navigate } from "hookrouter";
 
-const Nav = () => {
+const Nav = (props: NavProps) => {
+  const { user } = props;
+
+  const signIn = () => {
+    navigate("/login");
+  };
+
+  const signOut = () => {
+    window.location.href = "auth/signout";
+  };
+
   return (
     <nav className='flex items-center justify-between flex-wrap bg-black p-6'>
       <div className='flex items-center flex-shrink-0 text-white mr-6'>
@@ -10,9 +22,9 @@ const Nav = () => {
           width='54'
           height='54'
           viewBox='0 0 54 54'
-          xmlns='logo.svg'> 
+          xmlns='logo.svg'>
         </svg>
-        <span className='font-semibold text-xl tracking-tight'>Local Bandit</span>
+        <span className='font-semibold text-xl tracking-tight'>{ user ? `Welcome, ${user.displayName}` : "Local Bandit" }</span>
       </div>
       <div className='block lg:hidden'>
         <button className='flex items-center px-3 py-2 border rounded text-white border-teal-400 hover:text-white hover:border-white'>
@@ -30,23 +42,23 @@ const Nav = () => {
           <a
             href='#responsive-header'
             className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4'>
-           
+
           </a>
           <a
             href='#responsive-header'
             className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4'>
-           
+
           </a>
           <a
             href='#responsive-header'
             className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white'>
-           
+
           </a>
         </div>
         <div>
-          <a href='/' className='inline-block text-sm px-4 py-2 leading-none border text-white border-white hover:border-transparent hover:text-black hover:bg-white mt-4 lg:mt-0' >
-            Sign Out
-          </a>
+          <button onClick={user ? signOut : signIn} className='inline-block text-sm px-4 py-2 leading-none border text-white border-white hover:border-transparent hover:text-black hover:bg-white mt-4 lg:mt-0' >
+            {user ? "Sign Out" : "Sign In"}
+          </button>
         </div>
       </div>
     </nav>
