@@ -5,3 +5,7 @@ body{
 .artist-details{
     background-color: grey;
 }
+
+.artist-img{
+    width: 200px;
+}

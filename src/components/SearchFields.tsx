@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import { SearchFieldsProps, SearchForm } from "../../interfaces";
-import axios from "axios";
+// import axios from "axios";
 import dotenv from "dotenv"
 dotenv.config();
 

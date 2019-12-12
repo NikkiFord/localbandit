@@ -7,6 +7,7 @@ import "../src/components/style.css"
 import SplashPage from "./components/SplashPage";
 import LoginPage from "./components/LoginPage";
 import NotFound from "./components/NotFound";
+import EventDetails from "./components/EventDetails";
 
 import "./App.css";
 
@@ -41,6 +42,7 @@ const App = () => {
         {/* Page Components */}
         { useRoutes(routes)(user) || <NotFound /> }
       </div>
+      {/* <EventDetails /> */}
     </div>
   );
 };
