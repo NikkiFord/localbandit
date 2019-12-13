@@ -1,48 +1,27 @@
-import React, { useState } from "react";
-import "./style.css";
-import Nav from "./Nav";
-import NavBar from "./NavBar";
-import Results from "./ResultsTable";
-import SearchFields from "./SearchFields";
-import { SearchForm, SplashPageProps } from "../../interfaces";
+import React from "react";
+import "./login.css";
+import { SplashPageProps } from "../../interfaces";
+import { navigate } from "hookrouter";
 
 const Splash = (props: SplashPageProps) => {
-  const [searchData, setSearchData] = useState({} as SearchForm);
+  const { user } = props;
+
+  if (user) {
+    navigate("/home");
+  }
+
   return (
-    <div className="wrapper">
-      <Nav user={props.user} />
-      {/* <div className='header pb-10'>
-        <h1 className='pt-10 font-mono text-5xl'>
-          Welcome to LocalBandIt. Bitches.
-        </h1>
-      </div> */}
-
-      <SearchFields setSearchData={setSearchData} />
-
-      {/* <ul class='flex'>
-        <li class='mr-6'>
-          <a class='text-blue-500 hover:text-blue-800' href='/'>
-            Active
-          </a>
-        </li>
-        <li class='mr-6'>
-          <a class='text-blue-500 hover:text-blue-800' href='/'>
-            Link
-          </a>
-        </li>
-      </ul>
-
-    // </div> */}
-      <NavBar />
-      <div className="flex flex-row mt-6 ml-20 mr-20">
-        <div className="w-full">
-          {searchData ? (
-            <Results searchData={searchData} />
-          ) : (
-            <h1>No Results</h1>
-          )}
+    <div className="background">
+      {/* <button onClick={() => window.location.href="/auth/facebook"}>Login with Facebook</button> */}
+      <div className=" login-image">
+        <div className="login-button flex justify-center self-end">
+          <button
+            onClick={() => (window.location.href = "/auth/spotify")}
+            className="login-button-element mt-64 object-bottom font-semibold login-button h-12 self-center flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-8 "
+            type="button">
+            Login
+          </button>
         </div>
-       
       </div>
     </div>
   );

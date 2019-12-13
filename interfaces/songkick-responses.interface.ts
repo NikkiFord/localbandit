@@ -1,4 +1,4 @@
-  
+
 export interface SongkickResponse {
   resultsPage: ResultsPage;
 }
@@ -13,7 +13,7 @@ export interface ResultsPage {
 
 export interface Results {
   location?: Location[];
-  event?: SongkickEvent[];
+  event?: SongkickEvent[] | SongkickEvent;
 }
 
 export interface SongkickEvent {

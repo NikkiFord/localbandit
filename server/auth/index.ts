@@ -11,7 +11,7 @@ const {
   ROOT_DOMAIN
 } = process.env;
 
-export default app => {
+export default (app) => {
   /* Configure Passport Strategies */
   passport.use(
     new passportFacebook.Strategy(
@@ -74,7 +74,7 @@ export default app => {
   app.get(
     "/auth/facebook/callback",
     passport.authenticate("facebook", { failureRedirect: "/login" }),
-    (_req, res) => res.redirect("/")
+    (_req, res) => res.redirect("/home")
   );
 
   app.get(
@@ -84,7 +84,7 @@ export default app => {
   app.get(
     "/auth/spotify/callback",
     passport.authenticate("spotify", { failureRedirect: "/login" }),
-    (_req, res) => res.redirect("/")
+    (_req, res) => res.redirect("/home")
   );
 
   app.get("/auth/signout", (req, res) => {
@@ -96,9 +96,9 @@ export default app => {
   app.get("/auth/user", (req, res) => res.json(req.user));
 
   return (req, res, next) => {
-    // if (!req.user) {
-    //   return res.status(401).send();
-    // }
+    if (!req.user) {
+      return res.status(401).send();
+    }
     next();
   };
 };

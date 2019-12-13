@@ -3,9 +3,10 @@ import "./style.css";
 import axios from "axios";
 import moment from "moment";
 import racoonLoader from "../loading-graphics/racoon.gif";
-import { SongkickEvent, ResultsTableProps } from "../../interfaces";
+import { SongkickEvent, SearchResultsProps } from "../../interfaces";
+import { A } from "hookrouter";
 
-const Results = (props: ResultsTableProps) => {
+const SearchResults = (props: SearchResultsProps) => {
   const [eventList, setEventList] = useState<SongkickEvent[]>([]);
   const [loading, setLoading] = useState(false);
   const { city, state } = props.searchData;
@@ -17,8 +18,8 @@ const Results = (props: ResultsTableProps) => {
     axios
       .get<SongkickEvent[]>("/api/events", {
         params: {
-          city: city,
-          state: state
+          city,
+          state
         }
       })
       .then((response) => {
@@ -32,7 +33,7 @@ const Results = (props: ResultsTableProps) => {
   }, [city, state]);
 
   return (
-    <>
+    <div style={{ display: props.show ? "block" : "none" }}>
       {loading && (
         <img
           style={{ display: "block", margin: "auto" }}
@@ -71,6 +72,9 @@ const Results = (props: ResultsTableProps) => {
                   <td className="border px-4-py-2">
                     {event.venue.displayName}
                   </td>
+                  <td className="border px-4 py-2" style={{textAlign: "center"}}>
+                    <A style={{backgroundColor: "blue", color: "white"}} href={`/event-details/${event.id}`}>View Details</A>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -82,8 +86,8 @@ const Results = (props: ResultsTableProps) => {
           </button>
         </>
       )}
-    </>
+    </div>
   );
 };
 
-export default Results;
+export default SearchResults;

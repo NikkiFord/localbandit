@@ -6,7 +6,11 @@ const newUser = new Schema({
   name: String,
   spotify: {
     id: String,
-    accessToken: String
+    accessToken: String,
+    playlist: {
+      name: String,
+      id: String
+    }
   },
   facebookId: {
     id: String,

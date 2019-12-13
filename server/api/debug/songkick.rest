@@ -1,0 +1,9 @@
+GET https://api.songkick.com/api/3.0/search/locations.json
+  ?apikey=WIQZXlJdMZjH5OZc
+  &query=Santa%20Fe
+###
+GET https://api.songkick.com/api/3.0/metro_areas/90736/calendar.json
+  ?apikey=WIQZXlJdMZjH5OZc
+###
+GET https://api.songkick.com/api/3.0/events/39111094.json
+  ?apikey=WIQZXlJdMZjH5OZc
