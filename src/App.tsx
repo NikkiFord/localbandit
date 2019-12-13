@@ -1,50 +1,38 @@
-
 import React, { useState, useEffect } from "react";
-import {useRoutes, A} from "hookrouter";
+import { useRoutes } from "hookrouter";
 import axios from "axios";
 
-import "../src/components/style.css"
+import "../src/components/style.css";
+import HomePage from "./components/HomePage";
 import SplashPage from "./components/SplashPage";
-import LoginPage from "./components/LoginPage";
-import NotFound from "./components/NotFound";
 import EventDetails from "./components/EventDetails";
+import NotFound from "./components/NotFound";
+import SpotifyModal from "./components/SpotifyModal";
 
 import "./App.css";
 
 const routes = {
   "/": () => (user: any) => <SplashPage user={user} />,
-  "/login": () => (user: any) => <LoginPage user={user} />,
+  "/home*": () => (user: any) => <HomePage user={user} />,
+  "/event-details/:eventId": ({ eventId }: any) => (user: any) => <EventDetails user={user} eventId={eventId} />,
+  "/spotify-test": () => (user: any) => <SpotifyModal user={user} />
 };
 
 const App = () => {
   const [user, setUser] = useState(null as any);
 
   useEffect(() => {
-    axios.get("/auth/user")
-      .then(response => {
+    axios
+      .get("/auth/user")
+      .then((response) => {
         setUser(response.data || null);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  return (
-    <div>
-      <nav>
-        {/* Temporary Nav Buttons */}
-        <A className="nav-link" href="/">Splash Page</A>
-        <A className="nav-link" href="/login">Login Page</A>
-
-      </nav>
-
-      <div>
-        {/* Page Components */}
-        { useRoutes(routes)(user) || <NotFound /> }
-      </div>
-      {/* <EventDetails /> */}
-    </div>
-  );
+  return <div>{useRoutes(routes)(user) || <NotFound />}</div>;
 };
 
 export default App;

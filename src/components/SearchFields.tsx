@@ -3,6 +3,7 @@ import "./style.css";
 import { SearchFieldsProps, SearchForm } from "../../interfaces";
 // import axios from "axios";
 import dotenv from "dotenv"
+import { navigate } from "hookrouter";
 dotenv.config();
 
 const SearchFields = (props: SearchFieldsProps) => {
@@ -25,26 +26,6 @@ const SearchFields = (props: SearchFieldsProps) => {
   const searchClick = () => {
     props.setSearchData({ ...searchForm });
   }
-
-  // const spotTest = () =>{
-  //     const accessCode = "BQDymkTelk_pu50vMPzR96E4b7DndhMoWPZLTXfaAIzbJU52qvEB4n56nK5ezgX-36DxEJbRMGoMby-KdeysrSnTzGfdloDfJTr0Wo0xqtXeg1Rdklz9bHdHxiSSIyfHgU3QvkiDrBIn"
-
-  //     axios({
-  //       method: 'GET',
-  //       url: `https://api.spotify.com/v1/artists/0OdUWJ0sBjDrqHygGUXeCF`,
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': 'Bearer' + accessCode
-  //       }
-  //     }).then( res => {
-  //       console.log(res.data.tracks.items[0])
-  //     }
-
-  //     ).catch();
-  // };
-
-  
-
   return (
     <div className="search flex items-end m-20">
       <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
@@ -133,7 +114,7 @@ const SearchFields = (props: SearchFieldsProps) => {
       </button>
 
       <button
-        // onClick={spotTest}
+        onClick={() => navigate("/spotify-test")}
         className="mt-6 ml-4 items-end self-center flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2"
         type="button"
       >
