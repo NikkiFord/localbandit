@@ -35,16 +35,14 @@ const Splash = (props: SplashPageProps) => {
     // </div> */}
       <NavBar />
       <div className="flex flex-row mt-6 ml-20 mr-20">
-        <div className="w-6/12">
+        <div className="w-full">
           {searchData ? (
             <Results searchData={searchData} />
           ) : (
             <h1>No Results</h1>
           )}
         </div>
-        <div className="w-6/12 artist-details">
-          <h1>Artist's Top 10</h1>
-        </div>
+       
       </div>
     </div>
   );
