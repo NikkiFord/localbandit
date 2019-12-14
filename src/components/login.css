@@ -20,8 +20,13 @@ h1{
 
 .login-button{
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     z-index: 1;
+    position:fixed;
+    height: auto;
+    top:65%;
+    left:50%;
+    transform: translate(-50%,-50%);
 }
 
 .login-button-element{

@@ -37,7 +37,7 @@ const SearchFields = (props: SearchFieldsProps) => {
         </label>
 
         <input
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
+          className="bg-white rounded focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
           type="email"
           placeholder="Jan 1 2020"
         ></input>
@@ -52,7 +52,7 @@ const SearchFields = (props: SearchFieldsProps) => {
         </label>
 
         <input
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
+          className="bg-white rounded focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
           type="email"
           placeholder="Jan 1 2020"
         ></input>
@@ -69,13 +69,13 @@ const SearchFields = (props: SearchFieldsProps) => {
         <input
           value={searchForm.city}
           onChange={updateCity}
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
+          className="bg-white rounded focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
           type="text"
           placeholder="Salt Lake City"
         ></input>
       </div>
 
-      <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+      <div className="w-full md:w-1/12 px-3 mb-6 md:mb-0">
         <label
           className="block uppercase tracking-wide text-gray-700  text-left text-xs font-bold mb-2"
           htmlFor="grid-state"
@@ -107,19 +107,19 @@ const SearchFields = (props: SearchFieldsProps) => {
 
       <button
         onClick={searchClick}
-        className="mt-6 items-end self-center flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2"
+        className=" mt-10 rounded-full object-bottom font-bold self-center flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-2 px-6"
         type="button"
       >
         Go
       </button>
 
-      <button
+      {/* <button
         onClick={() => navigate("/spotify-test")}
         className="mt-6 ml-4 items-end self-center flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2"
         type="button"
       >
         Spotify
-      </button>
+      </button> */}
     </div>
   );
 };
