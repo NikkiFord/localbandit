@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./style.css";
+import UsStatesList from "./UsStatesList"
 import { SearchFieldsProps, SearchForm } from "../../interfaces";
 // import axios from "axios";
 import dotenv from "dotenv"
-import { navigate } from "hookrouter";
+import { render } from "react-dom";
+// import { navigate } from "hookrouter";
+// import { any } from "prop-types";
 dotenv.config();
 
 const SearchFields = (props: SearchFieldsProps) => {
@@ -89,9 +92,13 @@ const SearchFields = (props: SearchFieldsProps) => {
             className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
             id="grid-state"
           >
-            <option>UT</option>
+            {/* <option>UT</option>
             <option>NM</option>
-            <option>TX</option>
+            <option>TX</option> */}
+            {UsStatesList.map(state => {
+              return <option>{state}</option>;
+            })
+            }
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
             <svg

@@ -79,11 +79,7 @@ const SearchResults = (props: SearchResultsProps) => {
               ))}
             </tbody>
           </table>
-          <button
-            className="rounded-full mt-64 object-bottom font-semibold login-button h-12 self-center flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-2 px-8"
-            type="button">
-            Create Combined Playlist
-          </button>
+    
         </>
       )}
     </div>
