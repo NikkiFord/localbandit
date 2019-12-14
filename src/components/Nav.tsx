@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 import { NavProps } from "../../interfaces";
+import logo from "./logo.svg"
 
 const Nav = (props: NavProps) => {
   const { user } = props;
@@ -12,12 +13,11 @@ const Nav = (props: NavProps) => {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-black p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <svg
-          className="fill-current h-8 w-8 mr-2"
-          width="54"
-          height="54"
-          viewBox="0 0 54 54"
-          xmlns="logo.svg"></svg>
+        <img
+          className="fill-current h-10 w-10 mr-6"
+          width="100"
+          height="100"
+          src={logo}></img>
         <span className="font-semibold text-xl tracking-tight">
           {user ? `Welcome, ${user.name}` : "Local Bandit"}
         </span>
@@ -48,7 +48,7 @@ const Nav = (props: NavProps) => {
         <div>
           <button
             onClick={signOut}
-            className="inline-block text-sm px-4 py-2 leading-none border text-white border-white hover:border-transparent hover:text-black hover:bg-white mt-4 lg:mt-0">
+            className="uppercase font-bold tracking-widest inline-block text-sm px-6 py-2 leading-none border-2 text-white border-white hover:border-transparent hover:text-black hover:bg-white mt-6 lg:mt-0">
             Sign Out
           </button>
         </div>

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./style.css";
+import UsStatesList from "./UsStatesList"
 import { SearchFieldsProps, SearchForm } from "../../interfaces";
 // import axios from "axios";
 import dotenv from "dotenv"
-import { navigate } from "hookrouter";
+import { render } from "react-dom";
+// import { navigate } from "hookrouter";
+// import { any } from "prop-types";
 dotenv.config();
 
 const SearchFields = (props: SearchFieldsProps) => {
@@ -27,8 +30,8 @@ const SearchFields = (props: SearchFieldsProps) => {
     props.setSearchData({ ...searchForm });
   }
   return (
-    <div className="search flex items-end m-20">
-      <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+    <div className="search flex items-end m-20 mr-40">
+      <div className="w-full md:w-1/4 px-3 md:mb-0">
         <label
           className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left"
           htmlFor="grid-city"
@@ -37,8 +40,8 @@ const SearchFields = (props: SearchFieldsProps) => {
         </label>
 
         <input
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
-          type="email"
+          className="bg-white rounded focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
+          type="date"
           placeholder="Jan 1 2020"
         ></input>
       </div>
@@ -52,8 +55,8 @@ const SearchFields = (props: SearchFieldsProps) => {
         </label>
 
         <input
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
-          type="email"
+          className="bg-white rounded focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
+          type="date"
           placeholder="Jan 1 2020"
         ></input>
       </div>
@@ -69,13 +72,13 @@ const SearchFields = (props: SearchFieldsProps) => {
         <input
           value={searchForm.city}
           onChange={updateCity}
-          className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
-          type="text"
+          className="bg-white rounded focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
+          type="city"
           placeholder="Salt Lake City"
         ></input>
       </div>
 
-      <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+      <div className="w-full md:w-1/12 px-3 mb-6 md:mb-0">
         <label
           className="block uppercase tracking-wide text-gray-700  text-left text-xs font-bold mb-2"
           htmlFor="grid-state"
@@ -89,9 +92,13 @@ const SearchFields = (props: SearchFieldsProps) => {
             className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
             id="grid-state"
           >
-            <option>UT</option>
+            {/* <option>UT</option>
             <option>NM</option>
-            <option>TX</option>
+            <option>TX</option> */}
+            {UsStatesList.map(state => {
+              return <option>{state}</option>;
+            })
+            }
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
             <svg
@@ -107,19 +114,19 @@ const SearchFields = (props: SearchFieldsProps) => {
 
       <button
         onClick={searchClick}
-        className="mt-6 items-end self-center flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2"
+        className=" mt-6 mr-0 uppercase object-bottom font-bold tracking-widest self-center flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-1 px-6"
         type="button"
       >
-        Go
+        search
       </button>
 
-      <button
+      {/* <button
         onClick={() => navigate("/spotify-test")}
         className="mt-6 ml-4 items-end self-center flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2"
         type="button"
       >
         Spotify
-      </button>
+      </button> */}
     </div>
   );
 };
