@@ -4,7 +4,7 @@ const { SONGKICK_API_ROOT, SONGKICK_API_KEY } = process.env;
 
 export default async (req, res) => {
   try {
-    const { city, state } = req.query;
+    const { city, state, startDate, endDate } = req.query;
 
     const { data: locationData } = await axios.get<SongkickResponse>(
       `${SONGKICK_API_ROOT}/search/locations.json`,
@@ -40,6 +40,8 @@ export default async (req, res) => {
       `${SONGKICK_API_ROOT}/metro_areas/${location.metroArea.id}/calendar.json`,
       {
         params: {
+          min_date: startDate,
+          max_date: endDate,
           apikey: SONGKICK_API_KEY
         }
       }

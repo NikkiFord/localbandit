@@ -2,7 +2,7 @@ import spotifyClient from "../utils/spotify-client";
 
 export default async (req, res) => {
   try {
-    const { name } = req.query;
+    const { name } = req.body;
     const spotifyApi = spotifyClient(req, res);
     const playlistName = `LocalBand.it: ${name}`;
     const playlistResponse = await spotifyApi.createPlaylist(
