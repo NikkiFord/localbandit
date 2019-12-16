@@ -35,3 +35,10 @@ export interface EventDetailsProps {
   user: any;
   eventId: number;
 }
+
+export interface ModalProps {
+  handleClose: any;
+  handleSave?: any;
+  show: boolean;
+  children: any;
+}

@@ -5,8 +5,13 @@ import SearchResults from "./SearchResults";
 import SearchFields from "./SearchFields";
 import SavedEvents from "./SavedEvents";
 import { SearchForm, HomePageProps } from "../../interfaces";
+import { navigate } from "hookrouter";
 
-const Home = (props: HomePageProps) => {
+const Home = ({ user }: HomePageProps) => {
+  if (!user) {
+    navigate("/");
+  }
+
   const [searchData, setSearchData] = useState<SearchForm | null>(null);
   const [searchTabActive, setSearchTabActive] = useState(
     searchData ? true : false
@@ -22,7 +27,7 @@ const Home = (props: HomePageProps) => {
 
   return (
     <div className="wrapper">
-      <Nav user={props.user} />
+      <Nav user={user} />
       <SearchFields setSearchData={setHomePageSearchData} />
       <nav className="pl-20 px-8 pt-2 shadow-md">
         <div className="-mb-px flex justify-left">
