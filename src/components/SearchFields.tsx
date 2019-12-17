@@ -47,7 +47,7 @@ const SearchFields = (props: SearchFieldsProps) => {
     props.setSearchData({ ...searchForm });
   };
   return (
-    <div className="search flex items-end m-20 mr-40">
+    <div className="search flex items-end m-20 ">
       <div className="w-full md:w-1/4 px-3 md:mb-0">
         <label
           className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left"
@@ -63,7 +63,7 @@ const SearchFields = (props: SearchFieldsProps) => {
           placeholder="Jan 1 2020"></input>
       </div>
 
-      <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+      <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0 mr-0">
         <label
           className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left"
           htmlFor="grid-city">
@@ -90,10 +90,10 @@ const SearchFields = (props: SearchFieldsProps) => {
           onChange={updateCity}
           className="bg-white rounded focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
           type="city"
-          placeholder="Salt Lake City"></input>
+          placeholder="Enter city name"></input>
       </div>
 
-      <div className="w-full md:w-1/12 px-3 mb-6 md:mb-0">
+      <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
         <label
           className="block uppercase tracking-wide text-gray-700  text-left text-xs font-bold mb-2"
           htmlFor="grid-state">
@@ -103,7 +103,7 @@ const SearchFields = (props: SearchFieldsProps) => {
           <select
             value={searchForm.state}
             onChange={updateState}
-            className="bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
+            className="states-dropdown bg-white focus:outline-none focus:shadow-outline border border-gray-300  py-2 px-4 block w-full appearance-none leading-normal"
             id="grid-state">
               <option disabled value="">State</option>
             {UsStatesList.map((state) => {
@@ -123,7 +123,7 @@ const SearchFields = (props: SearchFieldsProps) => {
 
       <button
         onClick={searchClick}
-        className=" mt-6 mr-0 uppercase object-bottom font-bold tracking-widest self-center flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-1 px-6"
+        className=" blue-btn mt-6 mr-0 uppercase object-bottom font-bold tracking-widest self-center flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-1 px-6"
         type="button">
         search
       </button>
