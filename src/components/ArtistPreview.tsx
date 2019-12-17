@@ -6,7 +6,7 @@ const ArtistPreview = ({ artistName, artistId, tracks }) => {
     await apiUtil.addTracks(tracks.map(track => track.uri)).catch();
   };
   return (
-    <div className="border-black border-8 m-10 flex-auto text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
+    <div className="border-black border-8 m-10 flex-auto text-gray-700 text-center px-4 py-2 m-2">
       <div className="flex m-10">
         <div className="flex-row">
         <img

@@ -75,8 +75,10 @@ const EventDetails = ({ eventId, user }: EventDetailsProps) => {
 
 
             {/* can we carry over the event name and some venue details? */}
-            <div className="test flex">
-            <h1 className="text-black text-3xl">Event Details</h1>
+            <div className="test flex w-full ">
+            <div className="w-1/3 bg-gray-100 p-20">
+            <h1 className="text-black text-4xl">Event Details</h1>
+            </div>
             {event.performance && event.performance.map(performance => {
 
               const [artistData] = topTracks
@@ -90,6 +92,7 @@ const EventDetails = ({ eventId, user }: EventDetailsProps) => {
                 tracks={artistData.topTracks} />
 
             })}
+            
             </div>
         </div>
           }
