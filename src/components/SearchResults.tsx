@@ -63,11 +63,16 @@ const SearchResults = ({ searchData, show}: SearchResultsProps) => {
                       .map((performance) => performance.artist.displayName)
                       .join(", ")}
                   </td>
-                  <td className="border px-4-py-2">
+                  <td className="border px-4 py-2">
                     {event.venue.displayName}
                   </td>
                   <td className="border px-4 py-2" style={{textAlign: "center"}}>
-                    <A style={{backgroundColor: "blue", color: "white"}} href={`/event-details/${event.id}`}>View Details</A>
+{/*                  
+                  <button class="bg-grey-light hover:bg-grey text-grey-darkest font-bold py-2 px-4 rounded inline-flex items-center">
+  <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+  <span>Download</span>
+</button> */}
+                    <A className=" hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 inline-flex items-center" href={`/event-details/${event.id}`}>View Details</A>
                   </td>
                 </tr>
               ))}

@@ -10,3 +10,27 @@ body{
     width: 200px;
 }
 
+.blue-btn{
+    outline: none;
+}
+
+a:focus {
+    outline: none;
+}
+
+.states-dropdown{
+    overflow: hidden;
+    max-height: 200px;
+}
+
+#venue-name{
+    margin-left: 16px !important;
+}
+
+.test{
+    border: 2px solid red;
+}
+
+.test-2{
+    border: 2px solid teal;
+}
