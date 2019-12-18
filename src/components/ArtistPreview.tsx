@@ -21,11 +21,11 @@ const ArtistPreview = ({ artistName, artistId, tracks }) => {
           src={`https://images.sk-static.com/images/media/profile_images/artists/${artistId}/huge_avatar`} />
         </div>
         <div className=" justify-start ml-10">
-          <h1 className="font-extrabold text-black text-xl text-left uppercase tracking-widest mt-2">{artistName}</h1>
+          <h1 className="font-extrabold text-black text-xl text-left uppercase tracking-widest mt-2">Top tracks: {artistName}</h1>
           <ol className="list-inside text-left w-full list-decimal  mt-4 text-black text-xl font-medium">
             {tracks.length > 0 && tracks.map(track => (<li key={track.uri}>{track.name}</li>))}
           </ol>
-          <button id="addTracks" className=" w-full mt-6 uppercase font-bold tracking-widest  flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-1 px-6" onClick={addToSpotify}>Add to my Playlist</button>
+          <button id="addTracks" className=" w-full mt-10 uppercase font-bold tracking-widest  flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-1 px-6" onClick={addToSpotify}>Add to my Playlist</button>
 
         </div>
         </div>
