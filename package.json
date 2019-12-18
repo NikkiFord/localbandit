@@ -2,6 +2,7 @@
   "name": "localbandit",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://localbandit.nihaar.io",
   "dependencies": {
     "@chevtek/hookmodals": "^4.0.2",
     "@types/express": "^4.17.2",
@@ -36,9 +37,10 @@
     "wait-on": "^3.3.0"
   },
   "scripts": {
-    "start:server": "cd server && ts-node-dev --respawn --transpileOnly ./server.ts && wait-on tcp:3001",
-    "start:app": "react-scripts start",
-    "start": "run-p --race start:server start:app",
+    "dev:server": "cd server && ts-node-dev --respawn --transpileOnly ./server.ts && wait-on tcp:3001",
+    "dev:app": "react-scripts start",
+    "dev": "run-p --race dev:server dev:app",
+    "start": "cd server && ts-node-dev --respawn --transpileOnly ./server.ts",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
