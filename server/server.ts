@@ -26,7 +26,7 @@ const checkAuth = configureAuth(app);
 
 app.use("/api", checkAuth, apiRoutes);
 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
