@@ -16,6 +16,7 @@ h1{
     background-image: url("local-bandit-02.svg");
     background-repeat: no-repeat, repeat;
     height: 100vh;
+    background-position: center;
 }
 
 .login-button{
