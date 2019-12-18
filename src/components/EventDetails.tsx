@@ -7,8 +7,8 @@ import ArtistPreview from "./ArtistPreview";
 import { A, navigate } from "hookrouter";
 import apiUtil from "../utils/api.util";
 import { useModals } from "@chevtek/hookmodals"
-import back from "./back-btn.svg"
-import left from "./left-arrow.svg"
+
+
 
 const EventDetails = ({ eventId, user }: EventDetailsProps) => {
   if (!user) {
@@ -72,6 +72,7 @@ const EventDetails = ({ eventId, user }: EventDetailsProps) => {
     <div className="wrapper">
       {loading && (
         <img
+          className="details-loader"
           style={{ display: "block", margin: "auto" }}
           alt="Loading..."
           src={racoonLoader}
@@ -101,10 +102,20 @@ const EventDetails = ({ eventId, user }: EventDetailsProps) => {
 
             {/* can we carry over the event name and some venue details? */}
             <div className="test flex w-full ">
-            <div className="w-1/3 bg-gray-100 p-20">
-            <h1 className="text-black text-4xl">Event Details</h1>
-            <textarea style={{height: "100px", width: "100%"}} value={JSON.stringify(event, null, 2)} readOnly></textarea>
-            <button disabled={eventSaved} className={` w-full mt-6 uppercase font-bold tracking-widest flex-shrink-0 bg-teal-400 border-teal-400 text-sm border-4 text-white py-1 px-6 ${eventSaved ? "opacity-50 cursor-not-allowed" : "hover:bg-teal-600 hover:border-teal-600"}`} onClick={saveEvent}>{ eventSaved ? "Event Saved" : "Save Event" }</button>
+            <div className="w-1/3 bg-gray-100 p-20 mb-10">
+            <h1 className="text-black mb-10 font-extrabold text-xl text-left uppercase tracking-widest mt-4">Who, what, where, when</h1>
+            {/* <textarea style={{height: "100px", width: "100%"}} value={JSON.stringify(event, null, 2)} readOnly></textarea> */}
+              
+                <h1 className="text-black text-4xl font-extrabold mb-2">{event.displayName}</h1>
+                {/* <h1 className="text-black text-4xl">{event.location.city}</h1> */}
+               
+                {/* <h1 className="text-black text-4xl">{event.location.displayName}</h1> */}
+                {/* <h1 className="text-black text-4xl">{event.venue.displayName}</h1> */}
+                {/* <h1 className="text-black text-4xl">{event.start.date}</h1> */}
+
+                {/* <h1 className="text-black text-4xl">{event.status}</h1> */}
+                {/* <h1 className="text-black text-4xl">{event.start.date}</h1> */}
+            <button disabled={eventSaved} className={` w-full mt-10 uppercase font-bold tracking-widest flex-shrink-0 bg-teal-400 border-teal-400 text-sm border-4 text-white py-1 px-6 ${eventSaved ? "opacity-50 cursor-not-allowed" : "hover:bg-teal-600 hover:border-teal-600"}`} onClick={saveEvent}>{ eventSaved ? "Event Saved" : "Save Event" }</button>
             </div>
             {event.performance && event.performance.map(performance => {
 

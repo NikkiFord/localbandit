@@ -63,10 +63,10 @@ const SearchFields = ({ setSearchData, cachedSearch }: SearchFieldsProps) => {
   };
 
   return (
-    <div className="search flex items-end m-20 ">
+    <div className="search flex items-end p-20 background-art">
       <div className="w-full md:w-1/4 px-3 md:mb-0">
         <label
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left"
+          className="block uppercase tracking-wide text-black text-xs font-bold mb-2 text-left"
           htmlFor="grid-city">
           Start date
         </label>
@@ -81,7 +81,7 @@ const SearchFields = ({ setSearchData, cachedSearch }: SearchFieldsProps) => {
 
       <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0 mr-0">
         <label
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left"
+          className="block uppercase tracking-wide text-black text-xs font-bold mb-2 text-left"
           htmlFor="grid-city">
           End date
         </label>
@@ -96,7 +96,7 @@ const SearchFields = ({ setSearchData, cachedSearch }: SearchFieldsProps) => {
 
       <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
         <label
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left"
+          className="block uppercase tracking-wide text-black text-xs font-bold mb-2 text-left"
           htmlFor="grid-city">
           City
         </label>
@@ -111,7 +111,7 @@ const SearchFields = ({ setSearchData, cachedSearch }: SearchFieldsProps) => {
 
       <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
         <label
-          className="block uppercase tracking-wide text-gray-700  text-left text-xs font-bold mb-2"
+          className="block uppercase tracking-wide text-black  text-left text-xs font-bold mb-2"
           htmlFor="grid-state">
           State
         </label>
@@ -146,7 +146,7 @@ const SearchFields = ({ setSearchData, cachedSearch }: SearchFieldsProps) => {
 
       <button
         onClick={clearClick}
-        className=" blue-btn mt-6 mr-0 uppercase object-bottom font-bold tracking-widest self-center flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-1 px-6"
+        className=" mt-6 mr-0 uppercase object-bottom font-bold tracking-widest self-center text-black flex-shrink-0 bg-white hover:bg-black border-black hover:border-black text-sm border-4 hover:text-white py-1 px-6"
         type="button">
         clear
       </button>
