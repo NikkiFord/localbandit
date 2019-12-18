@@ -36,3 +36,11 @@ a:focus {
     width: 300px;
 }
 
+.background-art{
+    background: url(bg-waves-01.svg);
+    /* background-repeat: no-repeat; */
+    /* height: 100%;
+    width: 100%; */
+    background-size: cover;
+}
+

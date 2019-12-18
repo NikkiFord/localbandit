@@ -63,10 +63,10 @@ const SearchFields = ({ setSearchData, cachedSearch }: SearchFieldsProps) => {
   };
 
   return (
-    <div className="search flex items-end m-20 ">
+    <div className="search flex items-end p-20 background-art">
       <div className="w-full md:w-1/4 px-3 md:mb-0">
         <label
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left"
+          className="block uppercase tracking-wide text-black text-xs font-bold mb-2 text-left"
           htmlFor="grid-city">
           Start date
         </label>
@@ -81,7 +81,7 @@ const SearchFields = ({ setSearchData, cachedSearch }: SearchFieldsProps) => {
 
       <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0 mr-0">
         <label
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left"
+          className="block uppercase tracking-wide text-black text-xs font-bold mb-2 text-left"
           htmlFor="grid-city">
           End date
         </label>
@@ -96,7 +96,7 @@ const SearchFields = ({ setSearchData, cachedSearch }: SearchFieldsProps) => {
 
       <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
         <label
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 text-left"
+          className="block uppercase tracking-wide text-black text-xs font-bold mb-2 text-left"
           htmlFor="grid-city">
           City
         </label>
@@ -111,7 +111,7 @@ const SearchFields = ({ setSearchData, cachedSearch }: SearchFieldsProps) => {
 
       <div className="w-full md:w-1/4 px-3 mb-6 md:mb-0">
         <label
-          className="block uppercase tracking-wide text-gray-700  text-left text-xs font-bold mb-2"
+          className="block uppercase tracking-wide text-black  text-left text-xs font-bold mb-2"
           htmlFor="grid-state">
           State
         </label>
