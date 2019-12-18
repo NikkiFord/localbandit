@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const newUser = new Schema({
+const schema = {
   name: String,
+  savedEvents: [],
   spotify: {
     id: String,
     accessToken: String,
@@ -16,7 +17,9 @@ const newUser = new Schema({
     id: String,
     accessToken: String
   }
-});
+};
+
+const newUser = new Schema(schema, { strict: false });
 
 const User = mongoose.model("User", newUser);
 

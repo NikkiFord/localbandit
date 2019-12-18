@@ -1,38 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { SpotifyModalProps, ModalAPI } from "../../interfaces";
+import React, { useState } from "react";
+import { SpotifyModalProps } from "../../interfaces";
 import Modal from "./Modal";
-import modalUtil from "../utils/modal.util";
 import apiUtil from "../utils/api.util";
 
-const SpotifyModal = ({ user }: SpotifyModalProps) => {
+const CreatePlaylistModal = ({ user, modal, modals }: SpotifyModalProps) => {
   const defaultPlaylistName =
     user && user.spotify && user.spotify.playlist
       ? user.spotify.playlist.name
       : "";
-  const [show, setShow] = useState(false);
   const [playlistName, setPlaylistName] = useState(defaultPlaylistName);
-  const [modalApi] = useState<ModalAPI>({
-    name: "create-playlist",
-    open: () => setShow(true),
-    cleanup: () => setShow(false)
-  });
-
-  useEffect(() => modalUtil._registerModal(modalApi), []);
 
   const handleSave = async () => {
     try {
+      apiUtil.modals = modals;
+      apiUtil.user = user;
       await apiUtil.createPlaylist(playlistName);
-      modalApi.close();
+      modal.close();
     } catch (err) {
-      modalApi.close(err);
+      modal.error(err);
     }
-    setShow(false);
   };
 
   return (
     <Modal
-      show={show}
-      handleClose={() => modalApi.close()}
+      show={modal.isActive}
+      handleClose={() => modal.close()}
       handleSave={handleSave}>
       <label htmlFor="playlistName">Playlist Name:</label>
       <input
@@ -46,4 +38,4 @@ const SpotifyModal = ({ user }: SpotifyModalProps) => {
   );
 };
 
-export default SpotifyModal;
+export default CreatePlaylistModal;

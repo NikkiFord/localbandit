@@ -6,6 +6,7 @@ import racoonLoader from "../loading-graphics/racoon.gif";
 import ArtistPreview from "./ArtistPreview";
 import { A, navigate } from "hookrouter";
 import apiUtil from "../utils/api.util";
+import { useModals } from "@chevtek/hookmodals"
 import back from "./back-btn.svg"
 import left from "./left-arrow.svg"
 
@@ -17,11 +18,26 @@ const EventDetails = ({ eventId, user }: EventDetailsProps) => {
   const [event, setEvent] = useState({} as SongkickEvent);
   const [topTracks, setTopTracks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [eventSaved, setEventSaved] = useState(false);
+  const modals = useModals();
+
+  useEffect(() => {
+    if (!user || !user.savedEvents) {
+      return;
+    }
+    user.savedEvents.forEach(e => {
+      if (e.id === eventId) {
+        setEventSaved(true);
+      }
+    });
+  }, [eventId, user]);
 
   useEffect(() => {
     (async () => {
       try {
         setLoading(true);
+
+        apiUtil.modals = modals;
 
         const eventData = await apiUtil.event(eventId);
 
@@ -41,7 +57,16 @@ const EventDetails = ({ eventId, user }: EventDetailsProps) => {
         setLoading(false);
       }
     })();
-  }, [eventId])
+  }, [eventId, modals]);
+
+  const saveEvent = async () => {
+    await apiUtil.saveEvent(event);
+    setEventSaved(true);
+    if (!user.savedEvents) {
+      user.savedEvents = [];
+    }
+    user.savedEvents.push(event);
+  };
 
   return (
     <div className="wrapper">
@@ -66,18 +91,20 @@ const EventDetails = ({ eventId, user }: EventDetailsProps) => {
                   </A>
                 <h1 className="font-semibold text-xl tracking-tight">
                   Back</h1> */}
-                <button className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded inline-flex items-center"> 
+                <button className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded inline-flex items-center">
                   <span>Back</span>
                 </button>
                 </A>
             </div>
-          </nav> 
+          </nav>
 
 
             {/* can we carry over the event name and some venue details? */}
             <div className="test flex w-full ">
             <div className="w-1/3 bg-gray-100 p-20">
             <h1 className="text-black text-4xl">Event Details</h1>
+            <textarea style={{height: "100px", width: "100%"}} value={JSON.stringify(event, null, 2)} readOnly></textarea>
+            <button disabled={eventSaved} className={` w-full mt-6 uppercase font-bold tracking-widest flex-shrink-0 bg-teal-400 border-teal-400 text-sm border-4 text-white py-1 px-6 ${eventSaved ? "opacity-50 cursor-not-allowed" : "hover:bg-teal-600 hover:border-teal-600"}`} onClick={saveEvent}>{ eventSaved ? "Event Saved" : "Save Event" }</button>
             </div>
             {event.performance && event.performance.map(performance => {
 
@@ -92,12 +119,12 @@ const EventDetails = ({ eventId, user }: EventDetailsProps) => {
                 tracks={artistData.topTracks} />
 
             })}
-            
+
             </div>
         </div>
           }
     </div>
   );
     };
-    
+
 export default EventDetails;

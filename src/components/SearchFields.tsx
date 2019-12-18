@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import UsStatesList from "./UsStatesList";
 import { SearchFieldsProps, SearchForm } from "../../interfaces";
 import moment from "moment";
 import dotenv from "dotenv";
-import e from "express";
 dotenv.config();
 
-const SearchFields = (props: SearchFieldsProps) => {
-  const [searchForm, setSearchForm] = useState({
+const SearchFields = ({ setSearchData, cachedSearch }: SearchFieldsProps) => {
+  const [searchForm, setSearchForm] = useState<SearchForm>(cachedSearch || {
     city: "",
     state: "",
     startDate: moment().format("YYYY-MM-DD"),
     endDate: moment().add(7, "days").format("YYYY-MM-DD")
-  } as SearchForm);
+  });
+
+  useEffect(() => {
+    if (cachedSearch) {
+      setSearchForm(cachedSearch);
+    }
+  }, [cachedSearch]);
 
   const updateCity = (event: any) => {
     setSearchForm({
@@ -44,8 +49,19 @@ const SearchFields = (props: SearchFieldsProps) => {
   };
 
   const searchClick = () => {
-    props.setSearchData({ ...searchForm });
+    setSearchData({ ...searchForm });
   };
+
+  const clearClick = () => {
+    setSearchForm({
+      city: "",
+      state: "",
+      startDate: moment().format("YYYY-MM-DD"),
+      endDate: moment().add(7, "days").format("YYYY-MM-DD")
+    });
+    setSearchData(null);
+  };
+
   return (
     <div className="search flex items-end m-20 ">
       <div className="w-full md:w-1/4 px-3 md:mb-0">
@@ -123,9 +139,16 @@ const SearchFields = (props: SearchFieldsProps) => {
 
       <button
         onClick={searchClick}
-        className=" blue-btn mt-6 mr-0 uppercase object-bottom font-bold tracking-widest self-center flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-1 px-6"
+        className=" blue-btn mt-6 mr-0 uppercase object-bottom font-bold tracking-widest self-center flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-1 px-6 mr-2"
         type="button">
         search
+      </button>
+
+      <button
+        onClick={clearClick}
+        className=" blue-btn mt-6 mr-0 uppercase object-bottom font-bold tracking-widest self-center flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-1 px-6"
+        type="button">
+        clear
       </button>
 
       {/* <button

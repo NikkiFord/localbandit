@@ -14,6 +14,7 @@ const Nav = (props: NavProps) => {
     <nav className="flex items-center justify-between flex-wrap bg-black p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <img
+          alt="logo"
           className="fill-current h-10 w-10 mr-6"
           width="100"
           height="100"
@@ -35,7 +36,7 @@ const Nav = (props: NavProps) => {
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div className="text-sm lg:flex-grow">
-          <a
+          {/* <a
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"></a>
           <a
@@ -43,7 +44,7 @@ const Nav = (props: NavProps) => {
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"></a>
           <a
             href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"></a>
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"></a> */}
         </div>
         <div>
           <button

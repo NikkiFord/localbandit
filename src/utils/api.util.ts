@@ -1,12 +1,17 @@
 import axios from "axios";
-import modalUtil from "./modal.util";
+import { navigate } from "hookrouter";
+import { SongkickEvent } from "../../interfaces";
 
 export default {
+
+  user: null,
+  modals: null,
+
   async createPlaylist(name) {
     try {
       await axios.post("/api/create-playlist", { name });
 
-      await modalUtil.open("result", {
+      await this.modals.result.open({
         success: true,
         title: "Playlist Created",
         body: `Successfully created playlist "localband.it: ${name} on your Spotify account!`
@@ -42,12 +47,12 @@ export default {
       const playlistFollowed = await this.playlistFollowed();
 
       if (!playlistFollowed) {
-        await modalUtil.open("create-playlist");
+        await this.modals.createPlaylist.open({ user: this.user });
       }
 
       await axios.post("/api/add-tracks", { trackURIs });
 
-      await modalUtil.open("result", {
+      await this.modals.result.open({
         success: true,
         title: "Tracks Added",
         body: `Successfully added ${trackURIs.length} tracks to your Spotify playlist!`
@@ -84,6 +89,20 @@ export default {
     }
   },
 
+  async saveEvent(event: SongkickEvent) {
+    try {
+      await axios.post("/api/save-event", { event });
+
+      await this.modals.result.open({
+        success: true,
+        title: "Event Saved",
+        body: `Successfully saved ${event.displayName} so you can come back to it later!`
+      });
+    } catch (err) {
+      this.handleError(err);
+    }
+  },
+
   async getUser() {
     try {
       const response = await axios.get("/auth/user");
@@ -95,17 +114,15 @@ export default {
   },
 
   async handleError(err) {
-    debugger;
-    await modalUtil.open("result", {
+    if (err.response.status === 401) {
+      return navigate("/auth/spotify");
+    }
+    await this.modals.result.open({
       success: false,
-      title: `${err.status} Error!`,
-      body: `
-        An error has occurred.
-        <br />
-        <br />
-        ${err.toString()}
-      `
+      title: `${err.response ? err.response.status : "Unknown"} Error!`,
+      body: err.response ? err.response.data : err.toString()
     });
     throw err;
   }
+
 };
