@@ -1,5 +1,4 @@
 import passport from "passport";
-import passportFacebook from "passport-facebook";
 import passportSpotify from "passport-spotify";
 import db from "../db";
 
@@ -13,19 +12,6 @@ const {
 
 export default (app) => {
   /* Configure Passport Strategies */
-  passport.use(
-    new passportFacebook.Strategy(
-      {
-        clientID: FACEBOOK_CLIENT_ID,
-        clientSecret: FACEBOOK_CLIENT_SECRET,
-        callbackURL: `${ROOT_DOMAIN}/auth/facebook/callback`
-      },
-      (_accessToken, _refreshToken, profile, done) => {
-        return done(null, profile);
-      }
-    )
-  );
-
   passport.use(
     new passportSpotify.Strategy(
       {
@@ -70,13 +56,6 @@ export default (app) => {
   app.use(passport.session());
 
   /* Authentication Endpoints */
-  app.get("/auth/facebook", passport.authenticate("facebook"));
-  app.get(
-    "/auth/facebook/callback",
-    passport.authenticate("facebook", { failureRedirect: "/login" }),
-    (_req, res) => res.redirect("/home")
-  );
-
   app.get(
     "/auth/spotify",
     passport.authenticate("spotify", { scope: [

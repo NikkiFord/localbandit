@@ -1,8 +1,9 @@
 import React from "react";
 import { SearchForm } from ".";
-import { SongkickEvent } from "./songkick-responses.interface";
+import { IModalController, IModalControllers } from "@chevtek/hookmodals/dist/interfaces";
 
 export interface SearchFieldsProps {
+  cachedSearch: SearchForm | null;
   setSearchData: React.Dispatch<SearchForm | null>;
 }
 
@@ -25,10 +26,13 @@ export interface NavProps {
 
 export interface SavedEventsProps {
   show: boolean;
+  user: any;
 }
 
 export interface SpotifyModalProps {
   user: any;
+  modal: IModalController,
+  modals: IModalControllers
 }
 
 export interface EventDetailsProps {
