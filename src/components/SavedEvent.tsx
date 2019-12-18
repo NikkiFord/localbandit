@@ -6,17 +6,8 @@ import { A } from "hookrouter";
 
 const SavedEvent = ({ event }) => {
   return (
-    <div className="flex-wrap w-1/2 mr-10 h-10">
-      <div
-        // className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-        // style={{ backgroundImage: "url('https://tailwindcss.com/img/card-left.jpg')" }}
-        // title="Woman holding a mug"
-        
-        >
-           
-          
-        </div>
-      <div className="flex-wrap border-4 border-gray-400 bg-white p-4 leading-normal">
+    <div className="w-1/4">
+      <div className="border-4   border-gray-400 bg-white p-4 leading-normal">
       {/* <img
           alt="artist"
           className="artist-img border-black border-8 w-1/2 mt-2"
