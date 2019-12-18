@@ -146,7 +146,7 @@ const SearchFields = ({ setSearchData, cachedSearch }: SearchFieldsProps) => {
 
       <button
         onClick={clearClick}
-        className=" blue-btn mt-6 mr-0 uppercase object-bottom font-bold tracking-widest self-center flex-shrink-0 bg-teal-400 hover:bg-teal-600 border-teal-400 hover:border-teal-600 text-sm border-4 text-white py-1 px-6"
+        className=" mt-6 mr-0 uppercase object-bottom font-bold tracking-widest self-center text-black flex-shrink-0 bg-white hover:bg-black border-black hover:border-black text-sm border-4 hover:text-white py-1 px-6"
         type="button">
         clear
       </button>

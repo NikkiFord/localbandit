@@ -31,4 +31,8 @@ a:focus {
     border: 2px solid red;
 } */
 
+.details-loader{
+    padding-top: 10%;
+    width: 300px;
+}
 

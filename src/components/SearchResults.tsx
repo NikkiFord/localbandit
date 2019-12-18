@@ -48,6 +48,7 @@ const SearchResults = ({ searchData, show}: SearchResultsProps) => {
     <div style={{ display: show ? "block" : "none" }}>
       {loading && (
         <img
+          className="details-loader"
           style={{ display: "block", margin: "auto" }}
           alt="Loading..."
           src={racoonLoader}

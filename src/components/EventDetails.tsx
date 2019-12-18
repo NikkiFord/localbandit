@@ -72,6 +72,7 @@ const EventDetails = ({ eventId, user }: EventDetailsProps) => {
     <div className="wrapper">
       {loading && (
         <img
+          className="details-loader"
           style={{ display: "block", margin: "auto" }}
           alt="Loading..."
           src={racoonLoader}

@@ -49,7 +49,7 @@ const Nav = (props: NavProps) => {
         <div>
           <button
             onClick={signOut}
-            className="uppercase font-bold tracking-widest inline-block text-sm px-6 py-2 leading-none border-2 text-white border-white hover:border-transparent hover:text-black hover:bg-white mt-6 lg:mt-0">
+            className="uppercase font-bold tracking-widest inline-block text-sm px-6 py-2 leading-none border-white border-4 text-white  hover:border-transparent hover:text-black hover:bg-white mt-6 lg:mt-0">
             Sign Out
           </button>
         </div>
